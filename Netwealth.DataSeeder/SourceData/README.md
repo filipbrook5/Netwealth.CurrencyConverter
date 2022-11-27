@@ -1,0 +1,3 @@
+﻿# Acknowledgements
+## Currency data source...
+The original data source for currency data was http://www.floatrates.com/json-feeds.html

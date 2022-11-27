@@ -1,0 +1,73 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Netwealth Currency Interview Test 2022 - Response";
+}
+
+<header class="page-header page-header-compact page-header-light bg-white mb-4">
+    <div class="container-xl px-4">
+        <div class="page-header-content">
+            <div class="row align-items-center justify-content-between pt-3">
+                <div class="col-auto mb-3">
+                    <p class="fs-1">
+                        Currency Converter
+                    </p>
+                    <p class="fs-6">
+                        by Filip Brooks
+                    </p>
+                    <p class="fs-6">
+                        This is for demonstration purposes only and in response to an interview question entitled "<a href="https://coda.io/@@adam-smith-netwealth/netwealth-currency-interview-test-2022" target="_blank">Netwealth Currency Interview Test 2022</a>".
+                        The exchange rates where downloaded from <a href="http://www.floatrates.com/json-feeds.html" target="_blank">FloatRates</a> on Wednesday 23rd November 2022.
+                        This was a one off download, therefore the information will have decayed in accuracy. 
+                        Please don't use any of the numbers produced by this tool for any real world financial calculations.  
+                        If you do, be that at your own risk.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="container-xl px-4 mt-n10">
+    <div>
+        <form method="post">
+            <div class="card">
+                <div class="card-header">
+                    Conversion tool
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="CurrencyViewModel.FromCurrencyCode" class="control-label"></label>
+                                <select id="selectFromCurrencyCode" asp-for="CurrencyViewModel.FromCurrencyCode" class="form-control" asp-items="@(new SelectList(Model.CurrencyViewModel.FromCurrencyList, "key", "value"))">
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="CurrencyViewModel.ToCurrencyCode" class="control-label"></label>
+                                <select id="selectToCurrencyCode" asp-for="CurrencyViewModel.ToCurrencyCode" class="form-control" asp-items="@(new SelectList(Model.CurrencyViewModel.ToCurrencyList, "key", "value"))">
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="CurrencyViewModel.FromAmount" class="control-label"></label>
+                                <input asp-for="CurrencyViewModel.FromAmount" class="form-control" />
+                                <span asp-validation-for="CurrencyViewModel.FromAmount" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="CurrencyViewModel.ConversionRate" class="control-label"></label>
+                                <input asp-for="CurrencyViewModel.ConversionRate" class="form-control" disabled />
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="CurrencyViewModel.ToAmount" class="control-label"></label>
+                                <input asp-for="CurrencyViewModel.ToAmount" class="form-control" disabled />
+                            </div>
+                        </div>
+                        <p></p>
+                        <div class="form-group">
+                            <input type="submit" value="Convert" class="btn btn-primary" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
